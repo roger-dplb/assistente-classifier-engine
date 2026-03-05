@@ -1,0 +1,6 @@
+id,texto,categoria_esperada,intencao_esperada,sentimento_esperado
+1,Cliente: Olá, percebi que fui cobrado duas vezes no meu cartão de crédito pela mesma compra. Preciso de um reembolso. Atendente: Olá! Sinto muito pelo inconveniente. Vou verificar sua fatura imediatamente e solicitar o estorno. O reembolso será processado em até 48 horas.,Financeiro,Solicitação de reembolso,Negativo
+2,Cliente: Bom dia! Gostaria de saber se vocês têm desconto para compras acima de R$500? Atendente: Bom dia! Sim, temos 10% de desconto para compras acima de R$500. Posso ajudá-lo com seu pedido?,Comercial,Informação de preço,Neutro
+3,Cliente: Meu produto chegou com defeito. A tela não liga. Atendente: Lamento pelo problema. Vamos trocar seu produto imediatamente. Envie uma foto do defeito e agendaremos a coleta gratuita.,Técnico,Troca de produto,Negativo
+4,Cliente: Ótimo atendimento! Meu problema foi resolvido rapidamente. Muito obrigado! Atendente: Ficamos felizes em ajudar! Agradecemos seu contato.,Suporte,Elogio,Positivo
+5,Cliente: Não consigo acessar minha conta. Esqueci a senha e o email de recuperação não está funcionando. Atendente: Vou ajudá-lo a recuperar o acesso. Vamos verificar seus dados de cadastro e redefinir suas credenciais.,Técnico,Problema técnico,Negativo
