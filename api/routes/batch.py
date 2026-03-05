@@ -5,7 +5,7 @@ from fastapi import APIRouter, UploadFile, File, Form
 from typing import List
 import time
 
-from api.models.requests import BatchRequest, BatchItem
+from api.models.requests import BatchRequest, BatchResponse, BatchItemResult
 from api.models.classification import ClassificationResponse
 from api.services.classifier import classify_interaction
 
@@ -26,8 +26,8 @@ async def batch_classify(
     return {"message": "Batch processing endpoint - implementação pendente"}
 
 
-@router.post("/items")
-async def batch_classify_items(request: BatchRequest):
+@router.post("/items", response_model=BatchResponse)
+async def batch_classify_items(request: BatchRequest) -> BatchResponse:
     """
     Process a batch of interactions provided directly in the request body.
     
@@ -39,21 +39,21 @@ async def batch_classify_items(request: BatchRequest):
     for item in request.items:
         try:
             result = await classify_interaction(item.texto)
-            results.append({
-                "id": item.id,
-                "success": True,
-                "data": result
-            })
+            results.append(BatchItemResult(
+                id=item.id,
+                success=True,
+                data=result
+            ))
         except Exception as e:
-            results.append({
-                "id": item.id,
-                "success": False,
-                "error": str(e)
-            })
+            results.append(BatchItemResult(
+                id=item.id,
+                success=False,
+                error=str(e)
+            ))
     
-    return {
-        "success": True,
-        "processed": len(results),
-        "results": results,
-        "processing_time_ms": int((time.time() - start_time) * 1000)
-    }
+    return BatchResponse(
+        success=True,
+        processed=len(results),
+        results=results,
+        processing_time_ms=int((time.time() - start_time) * 1000)
+    )
