@@ -8,7 +8,7 @@ router = APIRouter()
 
 
 @router.get("/distribution")
-def get_category_distribution(
+async def get_category_distribution(
     start_date: Optional[str] = Query(None),
     end_date: Optional[str] = Query(None)
 ):
@@ -25,7 +25,7 @@ def get_category_distribution(
 
 
 @router.get("/quality")
-def get_quality_metrics(
+async def get_quality_metrics(
     start_date: Optional[str] = Query(None),
     end_date: Optional[str] = Query(None)
 ):
@@ -42,7 +42,7 @@ def get_quality_metrics(
 
 
 @router.get("/sentiment-trend")
-def get_sentiment_trend(
+async def get_sentiment_trend(
     start_date: Optional[str] = Query(None),
     end_date: Optional[str] = Query(None),
     granularity: str = Query("day", regex="^(day|week|month)$")
@@ -60,7 +60,7 @@ def get_sentiment_trend(
 
 
 @router.get("/topics")
-def get_top_topics(
+async def get_top_topics(
     limit: int = Query(10, ge=1, le=100),
     start_date: Optional[str] = Query(None),
     end_date: Optional[str] = Query(None)

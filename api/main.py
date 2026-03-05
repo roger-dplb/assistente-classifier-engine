@@ -1,16 +1,29 @@
 """
 Main entry point for FastAPI application.
 """
-from fastapi import FastAPI
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from api.routes import classify, batch, reports
 from api.core.config import settings
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan events for startup and shutdown."""
+    # TODO: Implement startup logic (e.g., initialize resources, load models)
+    yield
+    # TODO: Implement shutdown logic (e.g., cleanup resources)
+
+
 app = FastAPI(
     title="Sistema de Autoetiquetagem Inteligente",
     description="API para classificação automática de atendimentos usando LLM",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # CORS middleware
@@ -23,9 +36,19 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(classify.router, prefix="/classify", tags=["Classificação"])
-app.include_router(batch.router, prefix="/batch", tags=["Processamento em Lote"])
-app.include_router(reports.router, prefix="/reports", tags=["Relatórios"])
+app.include_router(classify.router, prefix="/api/v1/classify", tags=["Classificação"])
+app.include_router(batch.router, prefix="/api/v1/batch", tags=["Processamento em Lote"])
+app.include_router(reports.router, prefix="/api/v1/reports", tags=["Relatórios"])
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Global exception handler for unhandled exceptions."""
+    # TODO: Add logging for production
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Internal server error", "success": False}
+    )
 
 
 @app.get("/health")
