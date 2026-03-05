@@ -1,0 +1,42 @@
+Você é um classificador especializado em atendimento ao cliente.
+
+Analise o seguinte atendimento e retorne um JSON estruturado:
+
+ATENDIMENTO:
+{texto}
+
+Classifique conforme a taxonomia:
+- Categoria: Financeiro, Técnico, Comercial, Suporte, Reclamação, Dúvida, Sugestão, Outros
+- Intenção: Solicitação de reembolso, Dúvida sobre cobrança, Problema técnico, Troca de produto, Cancelamento, Informação de preço, Solicitação de orçamento, Reclamação de serviço, Elogio, Outros
+- Sentimento: Positivo, Neutro, Negativo
+- Criticidade: Baixa, Média, Alta, Crítica
+- SLA/Urgência: 4h, 8h, 24h, 48h, 72h
+
+Avalie a qualidade do atendimento (0-10):
+- Empatia
+- Clareza
+- Objetividade
+- Resolutividade
+- Score Final (média ponderada)
+
+Gere também:
+- Resumo executivo (máximo 5 linhas)
+- Lista de tópicos principais abordados
+
+Responda APENAS com JSON válido no formato:
+{{
+  "categoria": "...",
+  "intencao": "...",
+  "sentimento": "...",
+  "criticidade": "...",
+  "sla_urgencia": "...",
+  "qualidade": {{
+    "empatia": 0,
+    "clareza": 0,
+    "objetividade": 0,
+    "resolutividade": 0,
+    "score_final": 0.0
+  }},
+  "resumo": "...",
+  "topicos": ["..."]
+}}

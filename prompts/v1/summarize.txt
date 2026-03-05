@@ -1,0 +1,10 @@
+Gere um resumo executivo do atendimento abaixo (máximo 5 linhas) e liste os tópicos principais.
+
+ATENDIMENTO:
+{texto}
+
+Retorne apenas JSON no formato:
+{{
+  "resumo": "...",
+  "topicos": ["..."]
+}}

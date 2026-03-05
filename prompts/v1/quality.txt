@@ -1,0 +1,12 @@
+Avalie a qualidade do atendimento abaixo nos critérios (0-10):
+
+ATENDIMENTO:
+{texto}
+
+Critérios:
+- Empatia: Capacidade de se colocar no lugar do cliente
+- Clareza: Qualidade da comunicação
+- Objetividade: Foco e precisão nas respostas
+- Resolutividade: Efetividade na resolução do problema
+
+Retorne apenas JSON com os scores.
