@@ -344,7 +344,41 @@ prompts/
 
 Para trocar a versão, altere `PROMPT_VERSION` no `.env`.
 
+## 📚 Documentação
+
+Toda a documentação do projeto está organizada na pasta `/docs` seguindo o **Padrão Diátaxis**:
+
+```
+docs/
+├── PRD.md              # Product Requirements Document
+├── tutorials/          # 🎓 Tutoriais - aprenda passo a passo
+├── how-to/            # 🛠️ Como Fazer - resolva problemas
+├── explanation/       # 💡 Explicação - entenda conceitos
+└── reference/         # 📖 Referência - consulte detalhes técnicos
+```
+
+**Para novos contribuidores:** Comece em [`docs/tutorials/01-setup.md`](./docs/tutorials/01-setup.md)
+
+**Padrão Diátaxis:** Documentação organizada em 4 quadrantes (Tutoriais, How-To, Explicação, Referência) para melhor experiência de aprendizado.
+
+---
+
 ## 🤝 Contribuindo
+
+### Documentação
+
+Ao adicionar documentação, siga o **Padrão Diátaxis**:
+
+| Tipo | Use quando... | Exemplo |
+|------|--------------|---------|
+| `tutorials/` | Ensinar algo do zero | "Primeira classificação" |
+| `how-to/` | Resolver problema específico | "Como adicionar categoria" |
+| `explanation/` | Explicar conceitos | "Como funciona o pipeline LLM" |
+| `reference/` | Detalhes técnicos | "Lista de endpoints" |
+
+Veja [`docs/README.md`](./docs/README.md) para o guia completo.
+
+### Código
 
 1. Crie uma branch: `git checkout -b feat/nome-da-feature`
 2. Faça commits: `git commit -m "feat: descrição"`
@@ -356,7 +390,7 @@ Para trocar a versão, altere `PROMPT_VERSION` no `.env`.
 - [Documentação FastAPI](https://fastapi.tiangolo.com/)
 - [Documentação Streamlit](https://docs.streamlit.io/)
 - [OpenAI API Reference](https://platform.openai.com/docs/)
-- [PRD do Projeto](./prd.md)
+- [PRD do Projeto](./docs/PRD.md)
 
 ## ❓ Troubleshooting
 
